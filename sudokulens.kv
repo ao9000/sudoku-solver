@@ -1,0 +1,60 @@
+WindowManager:
+    MainMenuScreen:
+    CameraScreen:
+    GalleryScreen:
+
+<MainMenuScreen>:
+    name: "main"
+
+    FloatLayout:
+        Label:
+            text: 'Sudoku Lens'
+            font_size: 60
+            pos_hint: {'center_x': 0.5, 'center_y': 0.8}
+
+        Button:
+            text: 'Camera'
+            font_size: 30
+            size_hint: 0.3, 0.1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+            on_release:
+                app.root.current = "camera"
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: 'Gallery'
+            font_size: 30
+            size_hint: 0.3, 0.1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+            on_release:
+                app.root.current = "gallery"
+                root.manager.transition.direction = "left"
+
+<CameraScreen>:
+    name: "camera"
+
+    FloatLayout:
+        Button:
+            text: "Go Back"
+            size_hint: 1, 0.1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.95}
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+        Image:
+            id: frame_img
+            size_hint: 1, 0.9
+            pos_hint: {'center_x': 0.5, 'center_y': 0.45}
+            allow_stretch: False
+            keep_ratio: True
+            size: (640, 480) # set pixel size
+
+<GalleryScreen>:
+    name: "gallery"
+
+    Button:
+        text: "Go Back"
+        on_release:
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
